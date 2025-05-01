@@ -172,3 +172,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignorar entorno virtual
+.venv/
+
+# Ignorar base de datos SQLite
+db.sqlite3
+# Archivos de configuración y caché de Python
+*.sqlite3

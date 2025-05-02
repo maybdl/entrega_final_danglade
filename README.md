@@ -25,3 +25,5 @@ Esta aplicación permite gestionar una tienda online básica, con funcionalidade
 - Por buenas prácticas, la carpeta `media/` está incluida en el archivo `.gitignore` y **no se sube al repositorio**.
 
 ⚠️ Estas imágenes se pueden visualizar correctamente al ejecutar la app en desarrollo.
+
+Comparto el link del drive para ver el video:https://drive.google.com/drive/u/0/folders/1r7kNaAYyiVJe_QZDgfl26TeVChUUaUiH

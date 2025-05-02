@@ -1,0 +1,15 @@
+{% extends 'proyecto/base.html' %}
+{% block title %}Nuevo Producto{% endblock %}
+
+{% block content %}
+<h2>Agregar producto</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="accion" value="otro">Agregar otro</button>
+    <button type="submit" name="accion" value="lista">Guardar y volver al catálogo</button>
+</form>
+
+<a href="{% url 'productos:lista' %}">Volver al catálogo</a>
+{% endblock %}

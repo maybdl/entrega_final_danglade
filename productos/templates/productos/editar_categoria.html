@@ -1,0 +1,14 @@
+{% extends 'proyecto/base.html' %}
+{% block title %}Editar Categoría{% endblock %}
+
+{% block content %}
+<h2>Editar categoría</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Guardar cambios</button>
+</form>
+
+<a href="{% url 'productos:lista' %}" class="btn">Volver al catálogo</a>
+{% endblock %}

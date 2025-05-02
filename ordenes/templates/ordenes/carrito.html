@@ -1,0 +1,35 @@
+{% extends "proyecto/base.html" %}
+
+{% block content %}
+<h2>🛒 Tu carrito</h2>
+
+{% if orden.items.all %}
+    <ul>
+        {% for item in orden.items.all %}
+            <li style="margin-bottom: 20px;">
+                <strong>{{ item.producto.nombre }}</strong> - ${{ item.producto.precio }} <br>
+                Cantidad: {{ item.cantidad }}
+
+                <form method="post" action="{% url 'ordenes:modificar' item.id %}" style="display:inline; margin-left: 10px;">
+                    {% csrf_token %}
+                    <input type="number" name="cantidad" value="{{ item.cantidad }}" min="1" style="width: 60px;">
+                    <button type="submit">Actualizar</button>
+                </form>
+
+                <a href="{% url 'ordenes:quitar' item.id %}" class="btn" style="background-color: crimson; margin-left: 10px;">Quitar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <hr>
+    <p><strong>Total:</strong> ${{ total }} – {{ total_items }} producto(s)</p>
+    <a href="{% url 'ordenes:finalizar' %}" class="btn" style="background-color: green;">Finalizar compra</a>
+
+
+    <a href="{% url 'productos:lista' %}" class="btn">Ver todos los productos</a>
+
+{% else %}
+    <p>Tu carrito está vacío.</p>
+    <a href="{% url 'productos:lista' %}" class="btn">Ir a productos</a>
+{% endif %}
+{% endblock %}

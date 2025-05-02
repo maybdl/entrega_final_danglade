@@ -180,3 +180,5 @@ cython_debug/
 db.sqlite3
 # Archivos de configuración y caché de Python
 *.sqlite3
+
+/media/

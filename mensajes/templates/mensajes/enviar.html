@@ -1,0 +1,21 @@
+{% extends "proyecto/base.html" %}
+
+{% block content %}
+<h2>✉️ Enviar mensaje</h2>
+
+<form method="post" style="max-width: 500px; margin: auto;">
+    {% csrf_token %}
+
+    <label>Para:</label><br>
+    <select name="destinatario" required>
+        {% for user in usuarios %}
+            <option value="{{ user.id }}">{{ user.username }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <label>Mensaje:</label><br>
+    <textarea name="contenido" rows="4" cols="40" required></textarea><br><br>
+
+    <button type="submit" class="btn">Enviar</button>
+</form>
+{% endblock %}

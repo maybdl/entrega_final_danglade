@@ -1,0 +1,15 @@
+{% extends 'proyecto/base.html' %}
+{% block title %}Nueva Categoría{% endblock %}
+
+{% block content %}
+<h2>Agregar nueva categoría</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="accion" value="otro">Agregar otra</button>
+    <button type="submit" name="accion" value="lista">Guardar y volver al catálogo</button>
+</form>
+
+<a href="{% url 'productos:lista' %}">Volver al catálogo</a>
+{% endblock %}

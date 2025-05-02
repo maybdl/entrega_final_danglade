@@ -1,0 +1,31 @@
+{% extends "proyecto/base.html" %}
+
+{% block content %}
+<h3 style="text-align: center; color: seagreen;">📝 Registro de usuario</h3>
+
+<form method="post" style="max-width: 400px; margin: 2rem auto;">
+    {% csrf_token %}
+
+    <!-- Mostramos errores generales del formulario -->
+    {% if form.errors %}
+        <div style="color: red; text-align: center;">
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <p>{{ field.label }}: {{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {{ form.as_p }}
+
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit">Crear cuenta</button>
+    </div>
+</form>
+
+<p style="text-align: center;">
+    ¿Ya tenés una cuenta? <a href="{% url 'clientes:login' %}">Iniciar sesión</a>
+</p>
+{% endblock %}

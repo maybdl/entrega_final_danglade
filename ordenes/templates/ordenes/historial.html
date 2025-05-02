@@ -1,0 +1,20 @@
+{% extends "proyecto/base.html" %}
+
+{% block content %}
+<h2>📜 Historial de compras</h2>
+
+{% if ordenes %}
+    {% for orden in ordenes %}
+        <div style="margin-bottom: 30px;">
+            <h4>Orden #{{ orden.id }} – {{ orden.creado|date:"d/m/Y H:i" }}</h4>
+            <ul>
+                {% for item in orden.items.all %}
+                    <li>{{ item.cantidad }} x {{ item.producto.nombre }} – ${{ item.producto.precio }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Aún no realizaste ninguna compra.</p>
+{% endif %}
+{% endblock %}

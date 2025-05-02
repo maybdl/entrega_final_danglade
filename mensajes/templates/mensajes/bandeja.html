@@ -1,0 +1,19 @@
+{% extends "proyecto/base.html" %}
+
+{% block content %}
+<h2>📬 Mensajes recibidos</h2>
+
+<ul>
+    {% for mensaje in mensajes %}
+        <li>
+            <strong>De:</strong> {{ mensaje.remitente.username }}<br>
+            {{ mensaje.contenido }}<br>
+            <em>{{ mensaje.fecha|date:"d/m/Y H:i" }}</em>
+        </li>
+    {% empty %}
+        <li>No tenés mensajes aún.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'mensajes:enviar' %}" class="btn">Enviar mensaje</a>
+{% endblock %}

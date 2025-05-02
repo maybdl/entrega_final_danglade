@@ -1,0 +1,22 @@
+{% extends "proyecto/base.html" %}
+
+{% block title %}Editar Perfil{% endblock %}
+
+{% block content %}
+<h2>✏️ Editar Perfil</h2>
+
+<form method="post" style="max-width: 500px; margin: auto;">
+    {% csrf_token %}
+
+    <h3>Datos del usuario</h3>
+    {{ user_form.as_p }}
+
+    <h3>Información de contacto</h3>
+    {{ perfil_form.as_p }}
+
+    <div style="margin-top: 1rem;">
+        <button type="submit" class="btn">Guardar cambios</button>
+    </div>
+</form>
+{% endblock %}
+

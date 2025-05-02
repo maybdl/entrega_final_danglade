@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mi Tienda{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.2rem;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 10px;
+        }
+        h1 {
+            color: #004080;
+        }
+        img.tienda {
+            width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>VersaMarkets</h1>
+        <nav>
+            <a href="{% url 'clientes:inicio_clientes' %}">Inicio</a>
+            <a href="{% url 'productos:lista' %}">Productos</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'ordenes:ver_carrito' %}">🛒 Ver carrito</a>
+                <a href="{% url 'ordenes:historial' %}">Mis compras</a>
+                <a href="{% url 'clientes:ver_perfil' %}">Perfil</a>
+                <a href="{% url 'clientes:about' %}">About</a>
+                <a href="{% url 'mensajes:bandeja' %}">Mensajes</a>
+                <a href="{% url 'clientes:logout' %}">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'clientes:login' %}">Iniciar sesión</a>
+                <a href="{% url 'clientes:signup' %}">Registrarse</a>
+            {% endif %}
+        </nav>
+    </header>
+
+    <main>
+        {% if messages %}
+            <ul style="list-style: none; color: green;">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

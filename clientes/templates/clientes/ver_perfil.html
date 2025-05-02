@@ -1,0 +1,16 @@
+{% extends "proyecto/base.html" %}
+
+{% block title %}Mi Perfil{% endblock %}
+
+{% block content %}
+<h2>👤 Mi Perfil</h2>
+
+<p><strong>Nombre:</strong> {{ usuario.first_name }} {{ usuario.last_name }}</p>
+<p><strong>Email:</strong> {{ usuario.email }}</p>
+
+<p><strong>Dirección:</strong> {{ perfil.direccion }}</p>
+<p><strong>Código postal:</strong> {{ perfil.codigo_postal }}</p>
+<p><strong>Teléfono:</strong> {{ perfil.telefono }}</p>
+
+<a href="{% url 'clientes:editar_perfil' %}" class="btn">Editar perfil</a>
+{% endblock %}
